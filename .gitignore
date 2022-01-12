@@ -102,3 +102,17 @@ dist
 
 # TernJS port file
 .tern-port
+
+node_modules
+dist/
+coverage/
+.DS_STORE
+.webpack
+
+### Intellij ###
+.idea
+/out/
+*.iml
+
+### Eclipse ###
+.project

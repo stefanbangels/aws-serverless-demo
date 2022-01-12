@@ -1,0 +1,65 @@
+{
+  "name": "@assertdevelopments/aws-serverless-demo",
+  "version": "0.0.1",
+  "description": "Demo material for the AWS Serverless presentation",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stefanbangels/aws-serverless-demo.git"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "test": "standard && jest --coverage",
+    "style": "standard | snazzy",
+    "fixStyle": "standard --fix"
+  },
+  "files": [
+    "dist",
+    "serverless",
+    "serverless.yml",
+    "package-lock.json"
+  ],
+  "dependencies": {
+    "@aws/dynamodb-data-mapper": "^0.7.3",
+    "jest-date-mock": "^1.0.8",
+    "lodash": "^4.17.20",
+    "lodash.forown": "^4.4.0",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "aws-sdk": "^2.799.0",
+    "dotenv": "^8.2.0",
+    "jest": "^26.6.3",
+    "jest-extended": "^0.11.5",
+    "jest-when": "^3.0.1",
+    "nock": "^13.0.5",
+    "snazzy": "^9.0.0",
+    "standard": "^14.3.4",
+    "webpack": "^4.44.2",
+    "webpack-command": "^0.5.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupFiles": [
+      "dotenv/config",
+      "jest-date-mock"
+    ],
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
+  },
+  "author": "Stefan Bangels",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ]
+}
