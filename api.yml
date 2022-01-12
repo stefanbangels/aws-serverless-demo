@@ -25,6 +25,9 @@ components:
   schemas:
     InfoResponse:
       properties:
-        buildNumber:
-          description: The build number
-          example: "20210213T001642"
+        application:
+          description: The name of the application
+          example: "AWS Serverless Demo"
+        description:
+          description: The description of the application
+          example: "Demo material for the AWS Serverless presentation"

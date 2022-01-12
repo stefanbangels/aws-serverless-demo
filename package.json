@@ -20,7 +20,6 @@
     "package-lock.json"
   ],
   "dependencies": {
-    "@aws/dynamodb-data-mapper": "^0.7.3",
     "jest-date-mock": "^1.0.8",
     "lodash": "^4.17.20",
     "lodash.forown": "^4.4.0",
