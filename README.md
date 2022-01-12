@@ -25,6 +25,6 @@ Demo material for the AWS Serverless presentation
 # Deploy
 * serverless deploy
 
-* Test
+# Test
 https://api.assertdevelopments.com/aws-serverless-demo/info
 
