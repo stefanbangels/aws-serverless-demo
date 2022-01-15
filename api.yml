@@ -19,6 +19,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InfoResponse'
+  /data:
+    post:
+      description: Forward data for processing
+      requestBody:
+        description: The data to be processed
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Data'
+      responses:
+        201:
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+              description: Will contain an url referencing the created data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForwardDataResponse'
+  /data/{id}:
+    get:
+      description: Get previously forwarded data
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: The id of the data
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data'
 
 components:
   schemas:
@@ -30,3 +69,16 @@ components:
         description:
           description: The description of the application
           example: "Demo material for the AWS Serverless presentation"
+        version:
+          description: The version of the application
+          example: "1.0"
+    ForwardDataResponse:
+      properties:
+        message:
+          description: The result
+          example: "accepted payload with id 1642259669630"
+    Data:
+      properties:
+        name:
+          description: A name
+          example: "Stefan"
