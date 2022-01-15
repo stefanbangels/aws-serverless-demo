@@ -12,6 +12,15 @@ Resources:
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
       Policies:
+        - PolicyName: lamdaPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - lambda:InvokeFunction
+                Resource:
+                  - "arn:aws:lambda:*:*:function:*"
         - PolicyName: s3Policy
           PolicyDocument:
             Version: '2012-10-17'

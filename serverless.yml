@@ -17,14 +17,14 @@ provider:
   iam:
     role: AwsServerlessDemoLambdaRole
   versionFunctions: false
+  runtime: nodejs14.x
+  memorySize: 1024
+  timeout: 10
 
 functions:
   info:
     name: info
     handler: src/info.handler
-    runtime: nodejs14.x
-    memorySize: 1024
-    timeout: 10
     events:
       - http:
           path: /info
@@ -32,9 +32,6 @@ functions:
   receiver:
     name: receiver
     handler: src/receiver.handler
-    runtime: nodejs14.x
-    memorySize: 1024
-    timeout: 10
     events:
       - http:
           path: /data
@@ -42,9 +39,6 @@ functions:
   downloader:
     name: downloader
     handler: src/downloader.handler
-    runtime: nodejs14.x
-    memorySize: 1024
-    timeout: 10
     events:
       - http:
           path: /data/{id}
@@ -52,16 +46,17 @@ functions:
   processor:
     name: processor
     handler: src/processor.handler
-    runtime: nodejs14.x
-    memorySize: 1024
-    timeout: 10
     events:
       - s3:
           bucket: aws-serverless-demo
           event: s3:ObjectCreated:*
           rules:
             - prefix: incoming/
-          
+    destinations:
+      onSuccess: publisher
+  publisher:
+    name: publisher
+    handler: src/publisher.handler
+
 resources:
   - ${file(serverless/resources.yml)}
-
