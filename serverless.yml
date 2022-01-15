@@ -1,5 +1,6 @@
 service: aws-serverless-demo
-frameworkVersion: ">=1.79.0"
+frameworkVersion: '>=2.37.2'
+variablesResolutionMode: 20210326
 
 package:
   patterns:
@@ -11,7 +12,6 @@ provider:
   region: 'eu-west-1'
   profile: 'stefan'
   stage: dev
-  endpointType: regional
   deploymentBucket:
     name: assertdevelopments
   iam:
@@ -29,7 +29,39 @@ functions:
       - http:
           path: /info
           method: GET
-
+  receiver:
+    name: receiver
+    handler: src/receiver.handler
+    runtime: nodejs14.x
+    memorySize: 1024
+    timeout: 10
+    events:
+      - http:
+          path: /data
+          method: POST
+  downloader:
+    name: downloader
+    handler: src/downloader.handler
+    runtime: nodejs14.x
+    memorySize: 1024
+    timeout: 10
+    events:
+      - http:
+          path: /data/{id}
+          method: GET
+  processor:
+    name: processor
+    handler: src/processor.handler
+    runtime: nodejs14.x
+    memorySize: 1024
+    timeout: 10
+    events:
+      - s3:
+          bucket: aws-serverless-demo
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: incoming/
+          
 resources:
   - ${file(serverless/resources.yml)}
 
