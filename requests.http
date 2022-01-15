@@ -1,0 +1,14 @@
+###
+GET https://api.assertdevelopments.com/aws-serverless-demo/info
+
+###
+POST https://api.assertdevelopments.com/aws-serverless-demo/data
+Content-Type: application/json
+
+{
+  "name": "stefan",
+  "timestamp": {{$timestamp}}
+}
+
+###
+GET https://api.assertdevelopments.com/aws-serverless-demo/data/1642273228402

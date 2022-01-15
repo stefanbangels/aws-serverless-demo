@@ -52,11 +52,6 @@ functions:
           event: s3:ObjectCreated:*
           rules:
             - prefix: incoming/
-    destinations:
-      onSuccess: publisher
-  publisher:
-    name: publisher
-    handler: src/publisher.handler
 
 resources:
   - ${file(serverless/resources.yml)}

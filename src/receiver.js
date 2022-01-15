@@ -16,7 +16,7 @@ exports.handler = async (event) => {
       Location: `https://api.assertdevelopments.com/aws-serverless-demo/data/${id}`
     },
     body: JSON.stringify({
-      message: `accepted payload with id ${id}`
+      message: `payload accepted, generated id ${id}`
     })
   }
 }

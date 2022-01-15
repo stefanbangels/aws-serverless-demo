@@ -17,9 +17,6 @@ Demo material for the AWS Serverless presentation
 # Serverless setup
 * npm install serverless -g
 
-# Build
-* npm install
-
 # Deploy
 * serverless deploy
 
