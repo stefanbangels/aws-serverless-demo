@@ -3,9 +3,6 @@ info:
   title: AWS Serverless Demo API
   description: Demo material for the AWS Serverless Presentation
   version: 0.0.1
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
   - url: https://api.assertdevelopments.com/aws-serverless-demo
 paths:
