@@ -2,10 +2,9 @@ service: aws-serverless-demo
 frameworkVersion: ">=1.79.0"
 
 package:
-  exclude:
-    - ./**
-  include:
-    - ./dist/api-bundle.js
+  patterns:
+    - '!./**'
+    - './src/*.js'
 
 provider:
   name: aws
@@ -15,21 +14,21 @@ provider:
   endpointType: regional
   deploymentBucket:
     name: assertdevelopments
-  role: !GetAtt AwsServerlessDemoLambdaRole.Arn
+  iam:
+    role: AwsServerlessDemoLambdaRole
   versionFunctions: false
-  logRetentionInDays: 7
-  runtime: nodejs14.x
 
 functions:
-  aws-serverless-demo-api:
-    name: aws-serverless-demo-api
-    handler: dist/api-bundle.handler
+  info:
+    name: info
+    handler: src/info.handler
+    runtime: nodejs14.x
     memorySize: 1024
     timeout: 10
     events:
       - http:
           path: /info
-          method: get
+          method: GET
 
 resources:
   - ${file(serverless/resources.yml)}

@@ -5,7 +5,7 @@ aws-serverless-demo
 Demo material for the AWS Serverless presentation
 
 # Prerequisites
-* Latest node.js 12.x
+* Latest node.js 14.x
 
 # Intellij setup
 * Checkout the source code and import the project from existing sources
@@ -19,8 +19,6 @@ Demo material for the AWS Serverless presentation
 
 # Build
 * npm install
-* npm run test
-* npm run build
 
 # Deploy
 * serverless deploy
