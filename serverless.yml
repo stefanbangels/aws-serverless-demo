@@ -18,7 +18,7 @@ provider:
     role: AwsServerlessDemoLambdaRole
   versionFunctions: false
   runtime: nodejs14.x
-  memorySize: 1024
+  memorySize: 512
   timeout: 10
 
 functions:
