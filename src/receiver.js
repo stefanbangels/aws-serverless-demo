@@ -2,14 +2,17 @@ const AWS = require('aws-sdk')
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' })
 
 exports.handler = async (event) => {
-  console.log(`receive: ${JSON.stringify(event)}`)
+  console.log(JSON.stringify(event))
+
   const id = new Date().getTime()
-  console.log(`storing data with id: ${id}`)
+
+  // upload
   await s3.upload({
-    Bucket: 'aws-serverless-demo',
-    Key: `incoming/data-${id}.json`,
+    Bucket: process.env.S3_BUCKET,
+    Key: `${process.env.S3_PREFIX}/data-${id}.json`,
     Body: event.body
   }).promise()
+
   return {
     statusCode: 201,
     headers: {
